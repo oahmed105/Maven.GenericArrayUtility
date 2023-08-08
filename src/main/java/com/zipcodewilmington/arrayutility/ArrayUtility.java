@@ -27,6 +27,8 @@ public class ArrayUtility <T> {
     public T getMostCommonFromMerge(T[] arrayToMerge) {
         Object[] hold = new Object[objArray.length + arrayToMerge.length];
         Integer i = 0;
+        Integer num = 0;
+        T object = null;
             for (int j = 0; j < objArray.length; j++){
                 hold[i] = objArray[j];
                 i++;
@@ -36,10 +38,13 @@ public class ArrayUtility <T> {
                 i++;
             }
             for (int j = 0; j < hold.length; j++){
-                getNumberOfOccurrences((T) hold[j]);
+                if (getNumberOfOccurrences((T) hold[j]) > num){
+                    num = getNumberOfOccurrences((T) hold[j]);
+                    object = (T) hold[j];
+                }
             }
 
-         return (T) hold[0];
+         return object;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
