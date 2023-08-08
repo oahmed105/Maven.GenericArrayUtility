@@ -48,11 +48,36 @@ public class ArrayUtility <T> {
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
-        return null;
+        Object[] hold = new Object[objArray.length + arrayToMerge.length];
+        Integer i = 0;
+        Integer num = 0;
+        for (int j = 0; j < objArray.length; j++){
+            hold[i] = objArray[j];
+            i++;
+        }
+        for (int j = 0; j < arrayToMerge.length; j++){
+            hold[i] = arrayToMerge[j];
+            i++;
+        }
+        for (int j = 0; j < hold.length; j++){
+            if ((hold[j]).equals(valueToEvaluate)){
+                num++;
+            }
+        }
+        return num;
     }
 
     public T[] removeValue(T valueToRemove) {
-        return null;
+        T[] newArr = Arrays.copyOf(objArray, objArray.length - getNumberOfOccurrences(valueToRemove));
+        Integer i = 0;
+
+        for (T j: objArray){
+            if (!(j == valueToRemove)){
+                newArr[i] = j;
+                i++;
+            }
+        }
+        return newArr;
     }
 
 
